@@ -7,6 +7,7 @@ let package = Package(
     name: "GitVersion",
     products: [
         .executable(name: "gitversion", targets: ["GitVersion"]),
+        .library(name: "GitVersionKit", targets: ["GitVersionKit"]),
     ],
     dependencies: [
         .package(url: "https://github.com/JohnSundell/Files", from: "2.2.1"),
