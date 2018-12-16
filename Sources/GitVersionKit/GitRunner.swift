@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Files
 
 public struct GitRunner {
   public static func run() -> String {
@@ -31,8 +32,7 @@ public struct GitRunner {
     process.arguments = ["rev-parse", "--short=7", "--verify", "HEAD"]
 
     // Gets the path to the current file so that the command can be run in current directory instead of derivedData
-    let f = #file.split(separator: "/").dropLast().joined(separator: "/")
-    process.currentDirectoryURL = URL(fileURLWithPath: "/" + f, isDirectory: true)
+    process.currentDirectoryURL = URL(fileURLWithPath: Folder.current.path, isDirectory: true)
 
     process.executableURL = URL(fileURLWithPath: "/usr/local/bin/git")
     let outpipe = Pipe()

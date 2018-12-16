@@ -20,7 +20,11 @@ public struct InfoSetter {
   }
 
   public static func getPlistAtPath(_ path: String) -> NSDictionary? {
-    return NSDictionary(contentsOfFile: path)
+    if path.hasPrefix(Folder.current.path) {
+      return NSDictionary(contentsOfFile: path)
+    }
+    let absolutePath = Folder.current.path + "/" + path
+    return NSDictionary(contentsOfFile: absolutePath)
   }
 
   public static func getPlistNamed(_ plist: String = "Info") -> NSDictionary? {
