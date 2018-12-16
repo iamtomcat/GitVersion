@@ -21,24 +21,34 @@ public struct InfoSetter {
 
   public static func getPlistAtPath(_ path: String) -> NSDictionary? {
     if path.hasPrefix(Folder.current.path) {
+      print("Path is:", path)
       return NSDictionary(contentsOfFile: path)
     }
-    let absolutePath = Folder.current.path + "/" + path
+    let absolutePath = Folder.current.path + path
+    print("AbsolutePath is:", absolutePath)
+
     return NSDictionary(contentsOfFile: absolutePath)
   }
 
   public static func getPlistNamed(_ plist: String = "Info") -> NSDictionary? {
     let path = InfoSetter.filePathWithFileName(plist)
-    let plistValues = NSDictionary(contentsOfFile: path)
+    let plistValues = InfoSetter.getPlistAtPath(path)
     return plistValues
   }
 
-  public static func setPlist(_ plist: NSDictionary, withName name: String = "Info") {
+  public static func setPlist(_ plist: NSDictionary, withName name: String = "Info", atPath path: String? = nil) {
+    if let path = path {
+      writePlist(plist: plist, path: path)
+    } else {
+      let path = InfoSetter.filePathWithFileName(name)
+      writePlist(plist: plist, path: path)
+    }
+  }
+
+  private static func writePlist(plist: NSDictionary, path: String) {
     guard #available(OSX 10.13, *) else {
       return
     }
-    let path = InfoSetter.filePathWithFileName(name)
-
     do {
       try plist.write(to: URL(fileURLWithPath: path))
     } catch {

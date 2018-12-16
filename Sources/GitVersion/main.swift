@@ -13,10 +13,8 @@ let date = Date().dateSinceCustomEpoch()
 
 if let path = path, let plist = InfoSetter.getPlistAtPath(path) {
   plist.setValue("\(Int(date)).\(decimal)", forKey: "CFBundleVersion")
-  InfoSetter.setPlist(plist)
-}
-
-if let plist = InfoSetter.getPlistNamed() {
+  InfoSetter.setPlist(plist, withName: "Info.plist", atPath: path)
+} else if let plist = InfoSetter.getPlistNamed() {
   plist.setValue("\(Int(date)).\(decimal)", forKey: "CFBundleVersion")
   InfoSetter.setPlist(plist)
 }
