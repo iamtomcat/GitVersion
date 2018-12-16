@@ -5,6 +5,9 @@ import PackageDescription
 
 let package = Package(
     name: "GitVersion",
+    products: [
+        .executable(name: "GitVersion", targets: ["GitVersion"]),
+    ],
     dependencies: [
         .package(url: "https://github.com/JohnSundell/Files", from: "2.2.1"),
     ],
