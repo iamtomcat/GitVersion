@@ -1,27 +1,16 @@
 // swift-tools-version:4.2
-// The swift-tools-version declares the minimum version of Swift required to build this package.
+// Managed by ice
 
 import PackageDescription
 
 let package = Package(
     name: "GitVersion",
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
+        .package(url: "https://github.com/JohnSundell/Files", from: "2.2.1"),
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
-        .target(
-            name: "GitVersion",
-            dependencies: ["GitVersionKit"]
-        ),
-        .target(
-            name: "GitVersionKit",
-            dependencies: []
-        ),
-        .testTarget(
-            name: "GitVersionKitTests",
-            dependencies: ["GitVersionKit"]),
+        .target(name: "GitVersion", dependencies: ["GitVersionKit"]),
+        .target(name: "GitVersionKit", dependencies: ["Files"]),
+        .testTarget(name: "GitVersionKitTests", dependencies: ["GitVersionKit"]),
     ]
 )

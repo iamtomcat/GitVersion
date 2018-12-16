@@ -6,13 +6,24 @@
 //
 
 import Foundation
+import Files
 
 public struct InfoSetter {
   private static func filePathWithFileName(_ name: String) -> String {
-    return FileManager.default.currentDirectoryPath + "/\(name).Plist"
+    var path = ""
+    Folder.current.makeSubfolderSequence(recursive: true).forEach { folder in
+      if folder.containsFile(named: name+".plist") && !folder.path.lowercased().contains("test") {
+        path = folder.path + "/" + name + ".plist"
+      }
+    }
+    return path
   }
 
-  public static func getPlist(_ plist: String = "Info") -> NSDictionary? {
+  public static func getPlistAtPath(_ path: String) -> NSDictionary? {
+    return NSDictionary(contentsOfFile: path)
+  }
+
+  public static func getPlistNamed(_ plist: String = "Info") -> NSDictionary? {
     let path = InfoSetter.filePathWithFileName(plist)
     let plistValues = NSDictionary(contentsOfFile: path)
     return plistValues
