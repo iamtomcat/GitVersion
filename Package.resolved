@@ -6,8 +6,26 @@
         "repositoryURL": "https://github.com/JohnSundell/Files",
         "state": {
           "branch": null,
-          "revision": "06f95bd1bf4f8d5f50bc6bb30b808c253acd4c88",
-          "version": "2.2.1"
+          "revision": "a84615f4558151fab52ac38df697ce2442991f93",
+          "version": "2.3.0"
+        }
+      },
+      {
+        "package": "Guaka",
+        "repositoryURL": "https://github.com/nsomar/Guaka",
+        "state": {
+          "branch": null,
+          "revision": "7d6135f0bcb324977698c40a1985f481899b6dce",
+          "version": "0.3.1"
+        }
+      },
+      {
+        "package": "StringScanner",
+        "repositoryURL": "https://github.com/getGuaka/StringScanner.git",
+        "state": {
+          "branch": null,
+          "revision": "c2cf5c81dade9486386f1cacd917c03e959a3005",
+          "version": "0.3.0"
         }
       }
     ]

@@ -10,15 +10,7 @@ import Files
 
 public struct GitRunner {
   public static func run() -> String {
-    #if os(OSX)
-      return GitRunner.runOSX()
-    #elseif os(Linux)
-      return GitRunner.runLinux()
-    #endif
-  }
-
-  private static func runLinux() {
-    fatalError("Needs to be setup")
+    return GitRunner.runOSX()
   }
 
   private static func runOSX() -> String {

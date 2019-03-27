@@ -12,7 +12,7 @@ public struct GitVersion {
   /// - Parameter gitHash: hexidecmal representation of version from git
   /// - Precondition: gitHash length must be 7
   public static func decimalFromHex(_ gitHash: String) -> UInt32 {
-    precondition(gitHash.count == 7, "Git hash length too long")
+    precondition(gitHash.count == 7, "Git hash length not 7")
     guard let value = UInt32(gitHash, radix: 16) else {
       return 0
     }

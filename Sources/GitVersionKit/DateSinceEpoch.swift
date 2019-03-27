@@ -8,7 +8,7 @@
 import Foundation
 
 extension Date {
-  public func dateSinceCustomEpoch() -> TimeInterval {
+  public static var customEpoch: Date? {
     var dateComponents = DateComponents()
     dateComponents.year = 2018
     dateComponents.day = 1
@@ -16,6 +16,14 @@ extension Date {
     dateComponents.timeZone = TimeZone(abbreviation: "GMT")
 
     if let date = Calendar(identifier: .gregorian).date(from: dateComponents) {
+      return date
+    }
+
+    return nil
+  }
+
+  public func dateSinceCustomEpoch() -> TimeInterval {
+    if let date = Date.customEpoch {
       return self.timeIntervalSince(date) / 60
     }
     return 0
