@@ -8,15 +8,15 @@
 import Foundation
 
 public struct WriteHeader {
-  private static func getTextForHeader(_ shortVersion: String, _ version: String) -> String {
+  private static func getTextForHeader(_ shortVersion: String, _ version: String, _ prefix: String) -> String {
     return """
-      #define TWBundleShortVersionString \(shortVersion)
-      #define TWBundleVersion \(version)
+      #define \(prefix)BundleShortVersionString \(shortVersion)
+      #define \(prefix)BundleVersion \(version)
     """
   }
 
-  public static func writeHeaderToPath(_ path: String, withShortVersion short: String, withVersion version: String) throws {
-    let text = getTextForHeader(short, version)
+  public static func writeHeaderToPath(_ path: String, withShortVersion short: String, withVersion version: String, withPrefix prefix: String) throws {
+    let text = getTextForHeader(short, version, prefix)
     try text.write(toFile: path, atomically: false, encoding: .utf8)
   }
 }

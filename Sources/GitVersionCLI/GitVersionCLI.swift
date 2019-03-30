@@ -6,6 +6,7 @@ public class GitVersionCLI {
   let cli: Command
 
   let setVersion = Flag(longName: "path", value: "./version.h", description: "Path to write header file with versions")
+  let setPrefix = Flag(longName: "prefix", value: "GV", description: "Path to write header file with versions")
 
   func processVersion() {
     let command = Command(usage: "version") { _, args in
@@ -28,9 +29,9 @@ public class GitVersionCLI {
       print("Version is", version.formattedValue)
 
       let err: Error?
-      if let path = flags.getString(name: "path") {
+      if let path = flags.getString(name: "path"), let prefix = flags.getString(name: "prefix") {
         do {
-          try WriteHeader.writeHeaderToPath(path, withShortVersion: "0.1.0", withVersion: version.formattedValue)
+          try WriteHeader.writeHeaderToPath(path, withShortVersion: "0.1.0", withVersion: version.formattedValue, withPrefix: prefix)
           err = nil
         } catch {
           err = error
