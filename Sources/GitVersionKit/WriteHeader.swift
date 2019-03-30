@@ -12,6 +12,7 @@ public struct WriteHeader {
     return """
       #define \(prefix)BundleShortVersionString \(shortVersion)
       #define \(prefix)BundleVersion \(version)
+    
     """
   }
 

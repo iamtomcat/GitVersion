@@ -1,4 +1,4 @@
-SWIFT ?= SWIFT
+SWIFT ?= swift
 
 generate-xcodeproj:
 	@echo "Generating xcode project"
