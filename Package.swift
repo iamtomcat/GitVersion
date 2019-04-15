@@ -11,8 +11,8 @@ let package = Package(
         .library(name: "GitVersionKit", targets: ["GitVersionKit"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/JohnSundell/Files", from: "3.0.0"),
-        .package(url: "https://github.com/nsomar/Guaka", from: "0.3.1"),
+        .package(url: "https://github.com/JohnSundell/Files", from: "3.1.0"),
+        .package(url: "https://github.com/nsomar/Guaka", from: "0.4.0"),
     ],
     targets: [
         .target(name: "GitVersion", dependencies: ["GitVersionCLI"]),

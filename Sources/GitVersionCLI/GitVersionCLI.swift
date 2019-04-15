@@ -61,12 +61,3 @@ public class GitVersionCLI {
     cli.execute()
   }
 }
-
-
-//let subCommand = Command(usage: "plist") { _, _ in
-//  let plist = InfoSetter.getPlistAtPath("TestAssets/Info.plist")
-//  print("plist is", plist!, InfoSetter.getPathToPlist())
-//}
-//
-//command.add(subCommand: subCommand)
-
